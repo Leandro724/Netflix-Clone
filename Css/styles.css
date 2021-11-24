@@ -6,6 +6,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: #111;
 }
+/* Row Styling */
 .row_poster{
     width: 100%;
     object-fit: contain;
@@ -28,4 +29,61 @@ transform: scale(1.08);
 .row{
     color: white;
     margin-left: 20px ;
+}
+/* Banner Styling */
+.banner{
+    background-image: url(../netflix-images/banner.jpg);
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    object-fit: contain;
+    height: 448px;
+}
+.banner_contents{
+    margin-left: 30px;
+    padding-top: 140px;
+    height: 190px;
+}
+.banner_Title{
+    font-size: 3rem;
+    font-weight: 800;
+    padding-bottom: 0.3rem;
+}
+.banner_description{
+    width: 45rem;
+    line-height: 1.3;
+    padding-top: 1rem;
+    font-size: 0.8rem;
+    max-width: 360px;
+    height: 95px;
+}
+.banner_button{
+    cursor: pointer;
+    color: white;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 5px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: rgba(34, 33, 33, 0.5);
+}
+#Remind_Me{
+    color: #000;
+    background-color: #e6e6e6;
+    
+}
+#Remind_Me:hover{
+    color: #000;
+    background-color: #bebdbd;
+    
+}
+.banner_button:hover{
+    color: white;
+    background-color: rgba(75, 73, 73, 0.5);
+    transition: all 0.2s;
+
 }
