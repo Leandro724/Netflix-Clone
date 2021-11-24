@@ -5,7 +5,10 @@ let genres_list_http = "https://api.themoviedb.org/3/genre/movie/list?";
 let movie_genres_http = "https://api.themoviedb.org/3/discover/movie?";
 let main = document.querySelector('body');
 
+// Fetch Method 
+
 function fetchAPI_1 (){
+    // Fetching Genres List
     fetch(genres_list_http + new URLSearchParams({
         api_key:api_key
     }))
@@ -16,12 +19,14 @@ function fetchAPI_1 (){
       return response.json();
     })
     .then( data =>{
-        // console.log(data);
+        
         data.genres.forEach(item => {
+            
             fetchMoviesListByGenres(item.id, item.name);
         });
     })
     }
+       // Fetching Movie Genres List
 const fetchMoviesListByGenres = (id,genres) => {
     fetch(movie_genres_http + new URLSearchParams({
         api_key:api_key,
@@ -35,11 +40,14 @@ const fetchMoviesListByGenres = (id,genres) => {
       return response.json();
     })
     .then( data =>{
+      
        makeCategoryElement(`${genres}_movies`, data.results)
     }).catch(error => console.log(error));
-
-    const makeImages = (id, data) =>{
+// Generating the Images on the Html
+const makeImages = (id, data) =>{
         const movieRow = document.getElementById(id);
+        
+       
         data.forEach((item, i) => {
             if(item.backdrop_path == null){
                 item.backdrop_path = item.poster_path;
@@ -50,11 +58,13 @@ const fetchMoviesListByGenres = (id,genres) => {
             movieRow.innerHTML += `
             <img src="${img_url}${item.backdrop_path}" alt="" class="row_poster"/>
             `
+          
         })
     
     }
-
+// Generating the Movie Title on the Html
 const makeCategoryElement = (category,data) =>{
+    // console.log(data);
     main.innerHTML += `
     <div class="row">
         <h2>${category.split("_").join(" ")}</h2>
