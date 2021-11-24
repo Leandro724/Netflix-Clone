@@ -3,10 +3,9 @@ let api_key = "f110971f3f6f544c662786cea77ca1a5";
 let img_url = "https://image.tmdb.org/t/p/w500";
 let genres_list_http = "https://api.themoviedb.org/3/genre/movie/list?";
 let movie_genres_http = "https://api.themoviedb.org/3/discover/movie?";
-let main = document.querySelector('body');
+let main = document.querySelectorAll('#main');
 
 // Fetch Method 
-
 function fetchAPI_1 (){
     // Fetching Genres List
     fetch(genres_list_http + new URLSearchParams({
@@ -26,6 +25,7 @@ function fetchAPI_1 (){
         });
     })
     }
+
        // Fetching Movie Genres List
 const fetchMoviesListByGenres = (id,genres) => {
     fetch(movie_genres_http + new URLSearchParams({
@@ -65,7 +65,7 @@ const makeImages = (id, data) =>{
 // Generating the Movie Title on the Html
 const makeCategoryElement = (category,data) =>{
     // console.log(data);
-    main.innerHTML += `
+    main[0].innerHTML += `
     <div class="row">
         <h2>${category.split("_").join(" ")}</h2>
         <div class="row_posters" id="${category}">
@@ -78,6 +78,7 @@ const makeCategoryElement = (category,data) =>{
 }
 }
 fetchAPI_1();
+
 
 
 
