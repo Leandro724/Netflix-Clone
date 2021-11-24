@@ -30,6 +30,9 @@ transform: scale(1.08);
     color: white;
     margin-left: 20px ;
 }
+#My_List{
+    margin-top: 100px;
+}
 /* Banner Styling */
 .banner{
     background-image: url(../netflix-images/banner.jpg);
@@ -86,4 +89,37 @@ transform: scale(1.08);
     background-color: rgba(75, 73, 73, 0.5);
     transition: all 0.2s;
 
+}
+/* Navigation Bar Styles */
+.nav_logo{
+    width: 80px;
+    object-fit: contain;
+}
+.nav_avatar{
+    width: 30px;
+    object-fit: contain;
+}
+.nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transform: all 1s;
+   
+}
+.nav_black{
+    background-color: #111;
+}
+.nav_left{
+    margin-left: 10px;
+}
+/* Link Styles */
+a{
+    text-decoration: none;
+    color: white;
+    
 }
