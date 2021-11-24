@@ -1,3 +1,77 @@
+// API Key 
+let api_key = "f110971f3f6f544c662786cea77ca1a5";
+let img_url = "https://image.tmdb.org/t/p/w500";
+let genres_list_http = "https://api.themoviedb.org/3/genre/movie/list?";
+let movie_genres_http = "https://api.themoviedb.org/3/discover/movie?";
+let main = document.querySelector('body');
+
+function fetchAPI_1 (){
+    fetch(genres_list_http + new URLSearchParams({
+        api_key:api_key
+    }))
+    .then(response =>{
+      if (!response.ok){
+          throw Error("False API");
+      }
+      return response.json();
+    })
+    .then( data =>{
+        // console.log(data);
+        data.genres.forEach(item => {
+            fetchMoviesListByGenres(item.id, item.name);
+        });
+    })
+    }
+const fetchMoviesListByGenres = (id,genres) => {
+    fetch(movie_genres_http + new URLSearchParams({
+        api_key:api_key,
+        with_genres:id,
+        page: Math.floor(Math.random() *3)+1
+    }))
+    .then(response =>{
+      if (!response.ok){
+          throw Error("False API");
+      }
+      return response.json();
+    })
+    .then( data =>{
+       makeCategoryElement(`${genres}_movies`, data.results)
+    }).catch(error => console.log(error));
+
+    const makeImages = (id, data) =>{
+        const movieRow = document.getElementById(id);
+        data.forEach((item, i) => {
+            if(item.backdrop_path == null){
+                item.backdrop_path = item.poster_path;
+                if(item.backdrop_path == null){
+                    return;
+                }
+            }
+            movieRow.innerHTML += `
+            <img src="${img_url}${item.backdrop_path}" alt="" class="row_poster"/>
+            `
+        })
+    
+    }
+
+const makeCategoryElement = (category,data) =>{
+    main.innerHTML += `
+    <div class="row">
+        <h2>${category.split("_").join(" ")}</h2>
+        <div class="row_posters" id="${category}">
+             
+         </div>
+    </div>
+    `;
+    makeImages(category,data);
+
+}
+}
+fetchAPI_1();
+
+
+
+// Nav Bar Functionality
 const nav = document.querySelector('#nav');
 
 window.addEventListener('scroll', ()=>{
@@ -8,4 +82,4 @@ window.addEventListener('scroll', ()=>{
     }
 });
 
-console.log(nav)
+// console.log(nav)
