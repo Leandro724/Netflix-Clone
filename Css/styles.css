@@ -12,7 +12,7 @@ body{
     object-fit: contain;
     max-height: 100px;
     margin-right:10px;
-    transition: transfrom 450ms;
+    transition: 1s;
 }
 .row_posters{
     display: flex;
@@ -109,10 +109,10 @@ transform: scale(1.08);
     z-index: 1;
     transition-timing-function: ease-in;
     transform: all 1s;
-   
 }
 .nav_black{
     background-color: #111;
+    display: none;
 }
 .nav_left{
     margin-left: 10px;
